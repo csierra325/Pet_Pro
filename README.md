@@ -9,7 +9,7 @@ The home page has text boxes that allows the user to input an event they want to
 
 To run the application locally, first clone this repository with the following commands. 
 
-git clone https://github.com/Zattelin/Come-Together.git
+git clone 
 
 npm install
 -express
@@ -30,6 +30,3 @@ Then never forget an event for your pet again!
 
 #Authors
 Camille Sierra
-Christian Chung
-Saif Dar 
-Zeppelin Fogarty
