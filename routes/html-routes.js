@@ -27,19 +27,22 @@ module.exports = function(app) {
       where: {
         UserId: req.user.id
       }
-    }).then(function(data) {
-      if (!data) return res.render("index");
+    }).then(function(dbPet) {
+      if (!dbPet) return res.render("index");
+      console.log("CURRENT USER ID", req.user.id);
       db.Todo.findAll({
-        MemberId: req.user.id
-      }).then(function(petTodoDB) {
+        where: {
+          UserId: req.user.id
+        }
+      }).then(function(dbPetTodo) {
         res.render("index", {
           msg: "Welcome Camille",
-          Todos: petTodoDB,
-          name: data.name,
-          about: data.about,
-          age: data.age,
-          breed: data.breed,
-          species: data.species
+          Todos: dbPetTodo,
+          name: dbPet.name,
+          about: dbPet.about,
+          age: dbPet.age,
+          breed: dbPet.breed,
+          species: dbPet.species
         });
       });
     });

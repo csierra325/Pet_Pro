@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Todo.associate = function(models) {
-    Todo.belongsTo(models.Pet, {
+    Todo.belongsTo(models.User, {
       foreign: {
         allowNull: false
       }

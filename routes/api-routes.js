@@ -85,14 +85,19 @@ module.exports = function(app) {
     console.log("NEW TODO:", req.body);
     db.Todo.create({
       todo: req.body.todo,
-      dueDate: req.body.dueDate
+      dueDate: req.body.dueDate,
+      UserId: req.user.id
     }).then(function(petTodoDB) {
       res.json(petTodoDB);
     });
   });
 
   app.get("/api/todos", function(req, res) {
-    db.Todo.findAll({}).then(function(petTodoDB) {
+    db.Todo.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(function(petTodoDB) {
       res.json(petTodoDB);
     });
   });
